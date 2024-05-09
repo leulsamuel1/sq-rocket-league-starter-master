@@ -31,7 +31,7 @@ class Bot(GoslingAgent):
             self.set_intent(short_shot(self.foe_goal.location))
             return
         
-        
+        # i'm adding this comment to see git hub change tracking
         target_boost = self.get_closest_large_boost()
         if target_boost is not None:
             self.set_intent(goto(target_boost.location))
