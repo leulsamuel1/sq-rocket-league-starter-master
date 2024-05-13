@@ -22,7 +22,8 @@ class Bot(GoslingAgent):
             return
         
         if self.me.boost == 0:
-            self.set_intent(goto(self.get_closest_large_boost()))
+            # shimshock fixed: (need goto_boost instead of goto)
+            self.set_intent(goto_boost(self.get_closest_large_boost()))
             return
         if not self.is_on_own_side():
             self.set_intent(short_shot(self.foe_goal.location)) 

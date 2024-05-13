@@ -1,7 +1,7 @@
 import math
 import rlbot.utils.structures.game_data_struct as game_data_struct
 from rlbot.agents.base_agent import BaseAgent, SimpleControllerState
-from util.common import *
+#from util.common import side #(shimshock added, then fixed)) can't import, circular
 
 
 # This file holds all of the objects used in gosling utils
@@ -136,6 +136,7 @@ class GoslingAgent(BaseAgent):
 
         return False
     
+    
     def is_on_own_side(self):
         if self.me.location.y * side(self.team) > 0:
             return True
@@ -145,6 +146,13 @@ class GoslingAgent(BaseAgent):
     def run(self):
         # override this with your strategy code
         pass
+
+# (shimshock fixed): copied from common.py (can't import common.py, is circular import)
+def side(x): 
+    # returns -1 for blue team and 1 for orange team
+    if x == 0:
+        return -1
+    return 1
 
 
 class car_object:
