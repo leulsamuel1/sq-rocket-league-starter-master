@@ -1,6 +1,7 @@
 import math
 import rlbot.utils.structures.game_data_struct as game_data_struct
 from rlbot.agents.base_agent import BaseAgent, SimpleControllerState
+from util.common import *
 
 
 # This file holds all of the objects used in gosling utils
@@ -134,6 +135,12 @@ class GoslingAgent(BaseAgent):
             return True
 
         return False
+    
+    def is_on_own_side(self):
+        if self.me.location.y * side(self.team) > 0:
+            return True
+        else:
+            return False
 
     def run(self):
         # override this with your strategy code

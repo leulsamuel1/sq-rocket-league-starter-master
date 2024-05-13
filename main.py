@@ -23,10 +23,14 @@ class Bot(GoslingAgent):
         
         if self.me.boost == 0:
             self.set_intent(goto(self.get_closest_large_boost()))
-            location1 = (self.ball.location - self.foe_goal.location).magnitude()
-            location2 = (self.me.location - self.foe_goal.location).magnitude()
-            if location1 > location2:
-                return short_shot
+            return
+        if not self.is_on_own_side():
+            self.set_intent(short_shot(self.foe_goal.location)) 
+            return
+        # balltooppgoal = (self.ball.location - self.foe_goal.location).magnitude()
+        # metooppgoal = (self.me.location - self.foe_goal.location).magnitude()
+        # if balltooppgoal > metooppgoal:
+        #     # return short_shot
         if self.me.boost >40:
             self.set_intent(short_shot(self.foe_goal.location))
             return
