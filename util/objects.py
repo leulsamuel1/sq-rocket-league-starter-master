@@ -1,7 +1,7 @@
 import math
 import rlbot.utils.structures.game_data_struct as game_data_struct
 from rlbot.agents.base_agent import BaseAgent, SimpleControllerState
-#from util.common import side #(shimshock added, then fixed)) can't import, circular
+
 
 
 # This file holds all of the objects used in gosling utils
@@ -128,6 +128,7 @@ class GoslingAgent(BaseAgent):
                 closest_boost = boost
                 closest_distance = distance
         return closest_boost
+    
     def is_in_front_of_ball(self):
         me_to_goal = (self.me.location- self.foe_goal.location).magnitude()
         ball_to_goal = (self.ball.location- self.foe_goal.location).magnitude()
@@ -135,7 +136,6 @@ class GoslingAgent(BaseAgent):
             return True
 
         return False
-    
     
     def is_on_own_side(self):
         if self.me.location.y * side(self.team) > 0:
@@ -147,13 +147,11 @@ class GoslingAgent(BaseAgent):
         # override this with your strategy code
         pass
 
-# (shimshock fixed): copied from common.py (can't import common.py, is circular import)
-def side(x): 
+def side(x):
     # returns -1 for blue team and 1 for orange team
     if x == 0:
         return -1
     return 1
-
 
 class car_object:
     # The carObject, and kin, convert the gametickpacket in something a little friendlier to use,
